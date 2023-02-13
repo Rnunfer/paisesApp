@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PaisService } from '../../services/pais.service';
 
 @Component({
@@ -7,16 +7,15 @@ import { PaisService } from '../../services/pais.service';
   styles: [
   ]
 })
-export class PorCapitalComponent {
+export class PorCapitalComponent implements OnInit{
 
   termino: string = "";
 
-  constructor( private paisService: PaisService) {
-    this.paisService.reiniciar();
-  };
+  constructor( private paisService: PaisService) {}
 
-  buscarPais() {
-    this.paisService.buscarPais(this.termino, "capital");
+  ngOnInit(): void {
+    this.paisService.reiniciar();
+    this.paisService.cambiarModoBusqueda("capital");
   }
 
   get listaPaises() {
@@ -25,9 +24,5 @@ export class PorCapitalComponent {
 
   get errorBusqueda() {
     return this.paisService.errorBusqueda;
-  }
-
-  get terminoErroneo() {
-    return this.paisService.terminoErroneo;
   }
 }

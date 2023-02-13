@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PaisService } from 'src/app/pais/services/pais.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,4 +14,9 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
+  constructor ( private paisService : PaisService) {}
+
+  cambiarModoBusqueda(modo: string) {
+    this.paisService.cambiarModoBusqueda(modo);
+  }
 }

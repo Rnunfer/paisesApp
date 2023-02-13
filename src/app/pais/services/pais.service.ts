@@ -12,12 +12,13 @@ export class PaisService {
   private _listaPaises: Country[] = [];
   private _errorbusqueda: boolean = false;
   private _terminoErroneo: string = "";
+  private _modoBusqueda: string = "name";
 
   constructor( private http: HttpClient ) {}
 
-  buscarPais( termino: string, modoBusqueda: string) {
+  buscarPais( termino: string ) {
 
-    const url = `${ this.apiUrl }/${modoBusqueda}/${ termino }`;
+    const url = `${ this.apiUrl }/${ this._modoBusqueda }/${ termino }`;
 
     this.http.get<Country[]>( url ).subscribe(
       (resp) => {
@@ -31,9 +32,18 @@ export class PaisService {
     );
   }
 
+  buscarPaisUno( id: string) {
+
+    const url = `${ this.apiUrl }/alpha/${ id }`;
+    return this.http.get<Country>( url );
+  }
+
   reiniciar() {
     this._errorbusqueda = false;
-    this._listaPaises = [];
+  }
+
+  cambiarModoBusqueda(modo: string) {
+    this._modoBusqueda = modo;
   }
 
   get listaPaises(): Country[] {
