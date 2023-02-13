@@ -1,1 +1,21 @@
-<p>ver-pais works!</p>
+<h2 class="col-12">País: {{pais.name.common}}</h2>
+<hr>
+<div class="col-4 pb-5">
+  <img class="img-fluid" src="{{pais.flags.png}}">
+</div>
+<div class="col-8">
+  <h3>Información:</h3>
+  <ul class="list-group">
+    <li class="list-group-item"><b>Población: </b>{{pais.population}}</li>
+    <li class="list-group-item"><b>Código numérico: </b>{{pais.cca2}}</li>
+    <li class="list-group-item"><b>Código alpha3: </b>{{pais.cca3}}</li>
+    <li class="list-group-item"><b>Capital: </b>{{pais.capital}}</li>
+  </ul>
+</div>
+<hr>
+<h3>Traducciones</h3>
+<ul class="list-group col-12" *ngForOf="let traduccion of pais.translations">
+  <li class="list-group-item col-3">{{traduccion.common}}</li>
+</ul>
+
+

@@ -8,15 +8,16 @@ import { Country } from '../interfaces/pais.interface';
 })
 export class PaisService {
 
-  private apiUrl: string = "https://restcountries.com/v2/";
+  private apiUrl: string = "https://restcountries.com/v3.1";
   private _listaPaises: Country[] = [];
   private _errorbusqueda: boolean = false;
+  private _terminoErroneo: string = "";
 
   constructor( private http: HttpClient ) {}
 
-  buscarPais( termino: string ) {
+  buscarPais( termino: string, modoBusqueda: string) {
 
-    const url = `${ this.apiUrl }/name/${ termino }`;
+    const url = `${ this.apiUrl }/${modoBusqueda}/${ termino }`;
 
     this.http.get<Country[]>( url ).subscribe(
       (resp) => {
@@ -25,8 +26,14 @@ export class PaisService {
       }, (err) => {
         this._errorbusqueda = true;
         this._listaPaises = [];
+        this._terminoErroneo = termino;
       }
     );
+  }
+
+  reiniciar() {
+    this._errorbusqueda = false;
+    this._listaPaises = [];
   }
 
   get listaPaises(): Country[] {
@@ -35,5 +42,9 @@ export class PaisService {
 
   get errorBusqueda(): boolean {
     return this._errorbusqueda;
+  }
+
+  get terminoErroneo(): string {
+    return this._terminoErroneo;
   }
 }

@@ -12,10 +12,12 @@ export class PorPaisComponent {
 
   termino: string = "";
 
-  constructor( private paisService: PaisService ) {};
+  constructor( private paisService: PaisService ) {
+    this.paisService.reiniciar();
+  };
 
   buscar() {
-    this.paisService.buscarPais(this.termino);
+    this.paisService.buscarPais(this.termino, "name");
   }
 
   get listaPaises() {
@@ -24,6 +26,10 @@ export class PorPaisComponent {
 
   get errorBusqueda() {
     return this.paisService.errorBusqueda;
+  }
+
+  get terminoErroneo() {
+    return this.paisService.terminoErroneo;
   }
 
 }
