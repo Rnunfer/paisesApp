@@ -12,7 +12,7 @@ export class PorRegionComponent implements OnInit{
   termino: string = "";
 
   constructor( private paisService: PaisService) {}
-  
+
   ngOnInit(): void {
     this.paisService.reiniciar();
     this.paisService.cambiarModoBusqueda("region");
@@ -23,7 +23,4 @@ export class PorRegionComponent implements OnInit{
     return this.paisService.listaPaises;
   }
 
-  get errorBusqueda() {
-    return this.paisService.errorBusqueda;
-  }
 }

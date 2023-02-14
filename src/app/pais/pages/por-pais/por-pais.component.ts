@@ -22,8 +22,4 @@ export class PorPaisComponent implements OnInit {
   get listaPaises() {
     return this.paisService.listaPaises;
   }
-
-  get errorBusqueda() {
-    return this.paisService.errorBusqueda;
-  }
 }

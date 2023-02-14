@@ -12,7 +12,7 @@ import { switchMap, tap } from 'rxjs';
 })
 export class VerPaisComponent implements OnInit{
 
-  pais!: Country;
+  paisAMostrar!: Country;
 
   constructor( private paisService: PaisService, private activatedRoute : ActivatedRoute, private router: Router) {}
 
@@ -22,7 +22,7 @@ export class VerPaisComponent implements OnInit{
       switchMap( (param) => this.paisService.buscarPaisUno( param['id'] ) ),
       tap(console.log)
     )
-    .subscribe( pais => this.pais = pais,
+    .subscribe( pais => this.paisAMostrar = pais,
       error => this.router.navigate(['']))
   }
 }

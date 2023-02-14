@@ -10,9 +10,8 @@ export class PaisService {
 
   private apiUrl: string = "https://restcountries.com/v3.1";
   private _listaPaises: Country[] = [];
-  private _errorbusqueda: boolean = false;
-  private _terminoErroneo: string = "";
-  private _modoBusqueda: string = "name";
+  private _modoBusqueda: string = "";
+  private _errorBusqueda: boolean = false;
 
   constructor( private http: HttpClient ) {}
 
@@ -21,15 +20,10 @@ export class PaisService {
     const url = `${ this.apiUrl }/${ this._modoBusqueda }/${ termino }`;
 
     this.http.get<Country[]>( url ).subscribe(
-      (resp) => {
-        this._listaPaises = resp;
-        this._errorbusqueda = false;
-      }, (err) => {
-        this._errorbusqueda = true;
-        this._listaPaises = [];
-        this._terminoErroneo = termino;
-      }
+      (resp) => { this._errorBusqueda = false; this._listaPaises = resp },
+      (err) => { this._errorBusqueda = true; this._listaPaises = []}
     );
+
   }
 
   buscarPaisUno( id: string) {
@@ -39,7 +33,6 @@ export class PaisService {
   }
 
   reiniciar() {
-    this._errorbusqueda = false;
   }
 
   cambiarModoBusqueda(modo: string) {
@@ -51,10 +44,6 @@ export class PaisService {
   }
 
   get errorBusqueda(): boolean {
-    return this._errorbusqueda;
-  }
-
-  get terminoErroneo(): string {
-    return this._terminoErroneo;
+    return this._errorBusqueda;
   }
 }

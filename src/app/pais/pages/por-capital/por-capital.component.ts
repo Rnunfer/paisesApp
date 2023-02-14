@@ -22,7 +22,4 @@ export class PorCapitalComponent implements OnInit{
     return this.paisService.listaPaises;
   }
 
-  get errorBusqueda() {
-    return this.paisService.errorBusqueda;
-  }
 }
