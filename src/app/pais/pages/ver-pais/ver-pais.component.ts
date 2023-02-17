@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { Country } from '../../interfaces/pais.interface';
+import { Country, Translation } from '../../interfaces/pais.interface';
 import { PaisService } from '../../services/pais.service';
 import { switchMap, tap } from 'rxjs';
 

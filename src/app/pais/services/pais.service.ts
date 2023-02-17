@@ -9,7 +9,7 @@ import { Country } from '../interfaces/pais.interface';
 export class PaisService {
 
   private apiUrl: string = "https://restcountries.com/v3.1";
-  private _listaPaises: Country[] = [];
+  private _listaPaises: Country[] = JSON.parse(localStorage.getItem("listaPaises")!) || [];
   private _unPais!: Country;
   private _modoBusqueda: string = "";
   private _errorBusqueda: boolean = false;
@@ -21,7 +21,7 @@ export class PaisService {
     const url = `${ this.apiUrl }/${ this._modoBusqueda }/${ termino }`;
 
     this.http.get<Country[]>( url ).subscribe(
-      (resp) => { this._errorBusqueda = false; this._listaPaises = resp },
+      (resp) => { this._errorBusqueda = false; this._listaPaises = resp; localStorage.setItem("listaPaises", JSON.stringify(this._listaPaises)); },
       (err) => { this._errorBusqueda = true; this._listaPaises = []}
     );
 
@@ -52,7 +52,7 @@ export class PaisService {
   }
 
   get listaPaises(): Country[] {
-    return [...this._listaPaises];
+    return this._listaPaises;
   }
 
   get errorBusqueda(): boolean {
