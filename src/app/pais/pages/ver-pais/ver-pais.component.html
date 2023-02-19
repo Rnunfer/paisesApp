@@ -14,13 +14,14 @@
     <ul class="list-group">
       <li class="list-group-item"><b>Población: </b>{{paisAMostrar.population}}</li>
       <li class="list-group-item"><b>Capital: </b>{{paisAMostrar.capital}}</li>
-      <li class="list-group-item"><b>Código postal: </b>{{paisAMostrar.postalCode.format}}</li>
-      <li class="list-group-item"><b>Acceso al mar: </b>{{paisAMostrar.landlocked}}</li>
+      <li class="list-group-item"><b>Región: </b>{{paisAMostrar.region}}</li>
+      <li class="list-group-item"><b>Países fronterizos: </b>{{paisAMostrar.borders}}</li>
+      <li class="list-group-item"><b>Mapa: </b><a href="{{paisAMostrar.maps.googleMaps}}">Ver</a></li>
     </ul>
   </div>
   <hr>
   <h3>Traducciones</h3>
-  <ul class="list-group col-12" *ngForOf="let traduccion of paisAMostrar.translations">
-    <li class="list-group-item col-3">{{traduccion.common}}</li>
+  <ul class="list-inline col-12">
+    <li *ngFor="let traduccion of paisAMostrar.translations | keyvalue" class="list-inline-item bg-primary p-2 rounded text-light mb-2">{{traduccion.value.common}}</li>
   </ul>
 </ng-template>

@@ -13,6 +13,7 @@ import { switchMap, tap } from 'rxjs';
 export class VerPaisComponent implements OnInit{
 
   paisAMostrar!: Country;
+  Object: any;
 
   constructor( private paisService: PaisService, private activatedRoute : ActivatedRoute, private router: Router) {}
 
