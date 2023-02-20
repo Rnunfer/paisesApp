@@ -15,7 +15,4 @@ export class PaisTablaComponent{
     return this.paisService.listaPaises;
   }
 
-  cambiarModoBusqueda(modo: string) {
-    this.paisService.cambiarModoBusqueda(modo);
-  }
 }

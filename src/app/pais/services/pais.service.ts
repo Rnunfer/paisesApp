@@ -20,9 +20,9 @@ export class PaisService {
     const url = `${ this.apiUrl }/${ this._modoBusqueda }/${ termino }`;
 
     this.http.get<Country[]>( url ).subscribe(
-      (resp) => { this._errorBusqueda = false; this._listaPaises = resp; localStorage.setItem("listaPaises", JSON.stringify(this._listaPaises)); },
+      (resp) => { this._errorBusqueda = false; this._listaPaises = resp; localStorage.setItem("listaPaises", JSON.stringify(this._listaPaises))},
       (err) => { this._errorBusqueda = true; this._listaPaises = []}
-    );
+    )
 
   }
 

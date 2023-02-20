@@ -14,7 +14,7 @@
             <td><img style="width: 50px;" [src]="pais.flags.png"></td>
             <td>{{pais.name.common}}</td>
             <td>{{pais.population}}</td>
-            <td><a [routerLink]="['/ver-pais', pais.cca2]">Ver..</a></td>
+            <td><button class="btn btn-primary" [routerLink]="['/ver-pais', pais.cca2]"><i class="fa-solid fa-magnifying-glass"></i></button></td>
         </tr>
     </tbody>
 </table>
