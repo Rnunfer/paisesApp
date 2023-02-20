@@ -14,7 +14,6 @@ export class PorCapitalComponent implements OnInit{
   constructor( private paisService: PaisService) {}
 
   ngOnInit(): void {
-    this.paisService.reiniciar();
     this.paisService.cambiarModoBusqueda("capital");
   }
 

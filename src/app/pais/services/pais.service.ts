@@ -10,7 +10,6 @@ export class PaisService {
 
   private apiUrl: string = "https://restcountries.com/v3.1";
   private _listaPaises: Country[] = JSON.parse(localStorage.getItem("listaPaises")!) || [];
-  private _unPais!: Country;
   private _modoBusqueda: string = "";
   private _errorBusqueda: boolean = false;
 
@@ -31,20 +30,6 @@ export class PaisService {
 
     const url = `${ this.apiUrl }/alpha/${ id }`;
     return this.http.get<Country>( url );
-  }
-
-  buscarUnPais( id: string) {
-
-    const url = `${ this.apiUrl }/alpha/${ id }`;
-
-    this.http.get<Country[]>( url ).subscribe(
-      (resp) => { this._errorBusqueda = false; this._listaPaises = resp },
-      (err) => { this._errorBusqueda = true; this._listaPaises = []}
-    );
-
-  }
-
-  reiniciar() {
   }
 
   cambiarModoBusqueda(modo: string) {
