@@ -9,8 +9,6 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorCapitalComponent implements OnInit{
 
-  termino: string = "";
-
   constructor( private paisService: PaisService) {}
 
   ngOnInit(): void {

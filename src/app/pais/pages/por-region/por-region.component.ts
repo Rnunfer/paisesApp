@@ -9,14 +9,11 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorRegionComponent implements OnInit{
 
-  termino: string = "";
-
   constructor( private paisService: PaisService) {}
 
   ngOnInit(): void {
     this.paisService.cambiarModoBusqueda("region");
   }
-;
 
   get listaPaises() {
     return this.paisService.listaPaises;
